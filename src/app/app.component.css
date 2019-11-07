@@ -1,0 +1,16 @@
+.filler {
+    flex: 1 1 auto;
+ }
+ .gap {
+    margin-right: 10px;
+ }
+
+ .container {
+     margin: 0px 70px;
+ }
+
+ @media screen and (max-width: 480px) {
+    .container {
+        margin: 0px 20px;
+    }
+  }
