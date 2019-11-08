@@ -1,0 +1,17 @@
+<mat-card class="task-card">
+    <mat-card-header class="task-card-header">
+        <mat-card-title>
+            <span>{{task.title}}</span>
+        </mat-card-title>
+        <div>
+            <i class="material-icons">
+                close
+            </i>
+        </div>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content class="task-card-content">
+        <div>Task Id: {{task.id}}</div>
+        {{task.description}}
+    </mat-card-content>
+</mat-card>
