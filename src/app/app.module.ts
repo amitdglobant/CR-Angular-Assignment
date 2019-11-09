@@ -10,6 +10,7 @@ import { TaskPanelComponent } from './components/task-panel/task-panel.component
 import { TaskComponent } from './components/task/task.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
+import { TaskService } from './services/task.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { TaskDialogComponent } from './components/task-dialog/task-dialog.compon
     TaskPanelComponent,
     TaskDialogComponent
   ],
-  providers: [],
+  providers: [ TaskService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

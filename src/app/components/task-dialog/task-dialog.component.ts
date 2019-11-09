@@ -15,6 +15,7 @@ export class TaskDialogComponent implements OnInit {
   public titleFormGroup: FormGroup;
 
   private actionName: string;
+  private status: string;
 
   constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -24,6 +25,7 @@ export class TaskDialogComponent implements OnInit {
   ngOnInit() {
     if(this.data) {
         this.actionName = this.data.actionName || 'Add'; //TO DO: create an enum for Actions['Add', 'Update', 'Delete']
+        this.status = 'ToDo';
     }
     this.titleFormGroup = new FormGroup(
         {
@@ -44,6 +46,10 @@ export class TaskDialogComponent implements OnInit {
   }
 
   close() {
-    this.dialogRef.close({event: this.actionName, data: this.titleFormGroup.value});
+    this.dialogRef.close({
+        actionName: this.actionName,
+        data: this.titleFormGroup.value,
+        status: this.status
+    });
   }
 }

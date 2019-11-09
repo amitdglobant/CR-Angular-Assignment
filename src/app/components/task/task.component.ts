@@ -1,6 +1,8 @@
-import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+// import { Subscription } from 'rxjs'
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-task',
@@ -10,9 +12,7 @@ import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 export class TaskComponent implements OnInit {
   @Output() emitData = new EventEmitter<string>();
 
-  private dialogRef: any; // TO DO: Add MatDialogRef as type
-
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public taskService: TaskService) {}
 
   ngOnInit() {}
 
@@ -37,6 +37,10 @@ export class TaskComponent implements OnInit {
 
   addRowData(data: any) { // TO DO: Remove any and create an Interface for task
     console.log("create task: ", data);
+    //TO DO: Generate unique id
+    this.taskService.setCard(data);
+    // this.taskService.getCard().subscribe(result => {
+    // });
   }
 
   updateRowData(data: any) { // TO DO: Remove any and create an Interface for task
