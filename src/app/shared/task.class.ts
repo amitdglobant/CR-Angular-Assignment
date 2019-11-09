@@ -21,7 +21,7 @@ export class Task{
 		this.status_id = 0
 		this.description = description
 
-		if(id)
+		if(id != null)
 			this.id = id
 		if(status)
 			this.status_id = status_id
