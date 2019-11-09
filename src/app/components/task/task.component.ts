@@ -16,7 +16,10 @@ export class TaskComponent implements OnInit {
 
   taskStatus = Task.statusList;
 
-  taskForm:FormGroup;
+  taskForm=new FormGroup({
+      title: new FormControl("", Validators.required),
+      description: new FormControl("", Validators.required),
+    });;
   addTask:boolean = false;
   constructor(private taskService:TaskService) {}
 
