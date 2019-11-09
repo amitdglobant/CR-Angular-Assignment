@@ -1,0 +1,25 @@
+<form [formGroup]="newTaskForm">
+    <mat-card class="task-card">
+        <mat-card-header class="task-card-header">
+            <mat-card-title>
+                <span>
+                    <input type="text" placeholder="Enter Title here" formControlName="Title">
+                    <span *ngIf="newTaskForm.controls.Description.errors.required">
+                        This field is mandatory
+                    </span>
+                </span>
+            </mat-card-title>
+            <div>
+                <i class="material-icons">
+                    close
+                </i>
+            </div>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="task-card-content">
+            <!-- <div>Task Id: {{task.id}}</div> -->
+            <input type="text" placeholder="Enter Description here" formControlName="Description">
+            <button mat-raised-button color="primary" (click)="onAddTaskClick()">Add Task</button>
+        </mat-card-content>
+    </mat-card>
+</form>

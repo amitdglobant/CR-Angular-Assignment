@@ -9,8 +9,10 @@
       </div>
     </div>
     <div class="drop-list">
+      <app-new-task-card *ngIf="task"></app-new-task-card>
       <div class="drop-box" *ngFor="let taskObj of tasks[task]">
-        <app-task-card [task]="taskObj"></app-task-card>
+        <!-- (OutputData)="outputDataFromCard($event)" -->
+        <app-task-card [task]="taskObj" ></app-task-card>
       </div>
     </div>
   </div>

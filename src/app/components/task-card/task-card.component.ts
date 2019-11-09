@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { emit } from 'cluster';
+import { EventEmitter } from 'events';
+import { TaskService } from 'src/app/task.service';
 
 @Component({
   selector: 'app-task-card',
@@ -7,11 +10,24 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TaskCardComponent implements OnInit {
 
-  @Input() task: any;
+  @Input() task: any;  
+  @Output() OutputData = new EventEmitter;
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+  }
+
+  onCloseClick(task) {
+    this.taskService.deletetask(task);
+    alert('Task deleted successfully.');
+    // this.OutputData.emit(task);
+  }
+
+  onDeleteClick(task) {
+    this.taskService.deletetask(task);
+    alert('Task deleted successfully.');
+    // this.OutputData.emit(task);
   }
 
 }
