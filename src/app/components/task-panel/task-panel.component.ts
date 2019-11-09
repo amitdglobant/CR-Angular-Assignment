@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AddTaskComponent } from '../add-task/add-task.component';
+import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
   selector: 'app-task-panel',
@@ -14,50 +17,28 @@ export class TaskPanelComponent implements OnInit {
 
   idCounter = 0;
 
-  tasks: any = {
-    todo: [
-      {
-        id: 1,
-        title: 'Sample Task 1',
-        description: 'Sample description of task. Can be longer.'
-      },
-      {
-        id: 4,
-        title: 'Sample Task 4',
-        description: 'Sample description of task. Can be longer.'
-      },
-      {
-        id: 6,
-        title: 'Sample Task 6',
-        description: 'Sample description of task. Can be longer.'
-      },
-      {
-        id: 5,
-        title: 'Sample Task 5',
-        description: 'Sample description of task. Can be longer.'
-      }
-    ],
-    inProgress: [
-      {
-        id: 2,
-        title: 'Sample Task 2' ,
-        description: 'Sample description of task. Can be longer.'
-      }
-    ],
-    done: [
-      {
-        id: 3,
-        title: 'Sample Task 3',
-        description: 'Sample description of task. Can be longer.'
-      }
-    ]
-  };
+  tasks:any;
 
   taskPanelList: string[];
 
-  constructor() {
+  dialogRef: any;
+
+  constructor(private dialog: MatDialog, taskService:TaskService) {
+    this.tasks = taskService.getAllTasks();
     this.taskPanelList = Object.keys(this.tasks);
   }
 
   ngOnInit() {}
+
+  getTaskData(event) {
+    this.dialogRef = this.dialog.open(AddTaskComponent, {
+      width: '250px',
+      data: { closeHandler: this.closeDialog, dialogRef: this.dialogRef }
+    });
+  }
+
+  closeDialog() {
+    console.log('Close Dialog');
+    this.dialogRef.closeDialog();
+  }
 }
