@@ -64,22 +64,25 @@ export class TaskService {
     }
   }
 
-  addTask(taskTitle, taskType, taskDesc, tskId = 0, oldTaskType ='') {
-    
+  addTask(taskTitle, taskType, taskDesc, tskId = 0, preTaskType = '') {
+    // Edit
     if(tskId) {
-      // Edit
-      this.deleteTask(tskId, taskType);
-      this.tasks[taskType].push({
-          id: tskId,
-          title: taskTitle,
-          description: taskDesc
-      });
+     // Edit Task
+     if(preTaskType != taskType) {
+        this.deleteTask(tskId, preTaskType);
+        this.tasks[taskType].push({id: tskId, title: taskTitle, description: taskDesc });
+     } else {
+      for ( let i=0; i < this.tasks[taskType].length; i++) {
+        if(tskId == this.tasks[taskType][i].id) {
+          this.tasks[taskType][i].title =  taskTitle;
+          this.tasks[taskType][i].description = taskDesc;
+          break;
+        }
+      }
+     }
     } else {
-      this.tasks[taskType].push({
-        id: ++this.idCounter,
-        title: taskTitle,
-        description: taskDesc
-      });
+      // Add Task
+      this.tasks[taskType].push({ id: ++this.idCounter, title: taskTitle, description: taskDesc });
      }
   }
 

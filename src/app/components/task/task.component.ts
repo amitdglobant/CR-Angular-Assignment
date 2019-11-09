@@ -12,7 +12,7 @@ export class TaskComponent implements OnInit {
   showHideAddEditTaskPanel: boolean;
   isTaskCreate: boolean;
   editTaskId: number;
-  previousTskTy:string = '';
+  previousTaskTy: string = '';
 
   constructor(public taskService: TaskService) {}
 
@@ -20,30 +20,31 @@ export class TaskComponent implements OnInit {
     this.taskService.emitData.subscribe(taskObj => {
       this.showHideAddEditTaskPanel = true;
       this.isTaskCreate = false;
-
-      document.querySelector("#taskTitle").value = taskObj.title;
-      document.querySelector("#taskType").value = taskObj.taskType;
-      document.querySelector("#taskDescription").value = taskObj.description;
+      this.previousTaskTy = taskObj.taskType;
+      document.querySelector('#taskTitle').value = taskObj.title;
+      document.querySelector('#taskType').value = taskObj.taskType;
+      document.querySelector('#taskDescription').value = taskObj.description;
       this.editTaskId = taskObj.id;
     });
   }
 
   toggleTaskPanel() {
     this.editTaskId = 0;
-    //alert('toggle called');
     this.showHideAddEditTaskPanel = !this.showHideAddEditTaskPanel;
     this.isTaskCreate = true;
   }
 
   saveTask(taskTitle, taskType, taskDesc) {
     if(this.isTaskCreate) {
+      // Add
       this.taskService.addTask(taskTitle.value, taskType.value, taskDesc.value);
       taskTitle.value = '';
       taskType.value = 'todo';
       taskDesc.value = '';
       alert('Task Saved Sccessfully');
     } else {
-      this.taskService.addTask(taskTitle.value, taskType.value, taskDesc.value, this.editTaskId);
+      // Edit
+      this.taskService.addTask(taskTitle.value, taskType.value, taskDesc.value, this.editTaskId, this.previousTaskTy);
       taskTitle.value = '';
       taskType.value = 'todo';
       taskDesc.value = '';
