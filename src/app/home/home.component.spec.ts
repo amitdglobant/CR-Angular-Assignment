@@ -37,5 +37,8 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  // it('should have addTitleName ', async(() => {
+  //   expect(component.addTitleName).toBe('Intem');
+  // }));
 
 });

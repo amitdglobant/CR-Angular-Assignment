@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
       this.todo.filter((item) => {
 
         if (item.id == this.currentId) {
-          console.log(item.id)
+
           item.name = this.addTitleName;
           return item;
         }
