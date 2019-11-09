@@ -4,9 +4,10 @@
             <span>{{task.title}}</span>
         </mat-card-title>
         <div>
-            <i class="material-icons">
+            <i class="material-icons" (click)="delete()">
                 close
             </i>
+        <button mat-button  class="mat-raised-button mat-primary" (click)="edit()">edit</button>
         </div>
     </mat-card-header>
     <mat-divider></mat-divider>
@@ -14,4 +15,5 @@
         <div>Task Id: {{task.id}}</div>
         {{task.description}}
     </mat-card-content>
+    
 </mat-card>

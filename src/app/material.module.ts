@@ -15,7 +15,7 @@ import {
   MatSliderModule,
   MatGridListModule,
   MatCardModule,
-  MatDividerModule
+  MatDividerModule,
 } from '@angular/material';
 
 @NgModule({
