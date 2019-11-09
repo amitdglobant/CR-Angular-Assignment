@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../../shared/task.class'
+import { TaskService } from '../../shared/task.service'
+
 
 @Component({
   selector: 'app-task-panel',
@@ -6,58 +9,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-panel.component.scss']
 })
 export class TaskPanelComponent implements OnInit {
-  title: object = {
-    todo: 'TO DO',
-    inProgress: 'IN PROGRESS',
-    done: 'DONE'
-  };
+  
+  taskStatus : Array<any>
 
-  idCounter = 0;
+  filteredTask : any;
 
-  tasks: any = {
-    todo: [
-      {
-        id: 1,
-        title: 'Sample Task 1',
-        description: 'Sample description of task. Can be longer.'
-      },
-      {
-        id: 4,
-        title: 'Sample Task 4',
-        description: 'Sample description of task. Can be longer.'
-      },
-      {
-        id: 6,
-        title: 'Sample Task 6',
-        description: 'Sample description of task. Can be longer.'
-      },
-      {
-        id: 5,
-        title: 'Sample Task 5',
-        description: 'Sample description of task. Can be longer.'
-      }
-    ],
-    inProgress: [
-      {
-        id: 2,
-        title: 'Sample Task 2' ,
-        description: 'Sample description of task. Can be longer.'
-      }
-    ],
-    done: [
-      {
-        id: 3,
-        title: 'Sample Task 3',
-        description: 'Sample description of task. Can be longer.'
-      }
-    ]
-  };
-
-  taskPanelList: string[];
-
-  constructor() {
-    this.taskPanelList = Object.keys(this.tasks);
+  constructor(private taskService:TaskService) {
+   this.taskStatus = Task.statusList
+   this.filteredTask = {}
+  
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.taskService.onTaskChanges.subscribe( this.loadAllTasks.bind(this) )
+    this.loadAllTasks()
+  }
+
+  loadAllTasks(){
+    let tasks = this.taskService.getAllTasks()
+    Task.statusList.forEach( (status)=>{
+      if(Object.keys(this.filteredTask).indexOf(status.id) == -1 )
+      {
+        this.filteredTask[status.id] = []
+      }
+    })
+
+    tasks.forEach( (task:Task)=>{
+      console.log(task)
+      this.filteredTask[task.getStatusId()].push(task)
+    })
+    console.log(this.filteredTask)
+  }
+
 }
