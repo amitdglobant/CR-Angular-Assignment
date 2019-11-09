@@ -1,5 +1,5 @@
-<mat-card class="task-card">
-    <mat-card-header class="task-card-header">
+<mat-card class="task-card" (click) = "editdata(task, index)">
+    <mat-card-header class="task-card-header" >
         <mat-card-title>
             <span>{{task.title}}</span>
         </mat-card-title>

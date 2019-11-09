@@ -1,0 +1,38 @@
+<h1 mat-dialog-title class="title-popup">Add Task</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="addTaskForm">
+        <div class="">
+                <div>
+                    <mat-label>Task title</mat-label>
+                    <div>
+                        <mat-form-field appearance="outline" class="mat-field">
+                            <input matInput formControlName="title" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                        <mat-label class="pay-label">Task ID</mat-label>
+                        <div class="pay-support-content">
+                            <mat-form-field appearance="outline" class="mat-field">
+                                <input matInput formControlName="taskID" />
+                            </mat-form-field>
+                        </div>
+                    </div>
+                <div>
+                    <mat-label class="pay-label">Task Discription</mat-label>
+                    <div class="pay-support-content">
+                        <mat-form-field appearance="outline" class="mat-field">
+                            <textarea matInput formControlName="discription"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+       
+    </form>
+</div>
+
+<div class="mt-3 text-center">
+    <button mat-raised-button (click)="addTask()"> Save</button>
+    <button mat-raised-button class="ml-2" (click)="cancel()"> Cancel</button>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskServiceService } from '../task-service.service';
 
 @Component({
   selector: 'app-task-panel',
@@ -54,10 +55,27 @@ export class TaskPanelComponent implements OnInit {
   };
 
   taskPanelList: string[];
+  getTask: any;
+  taskData: any;
 
-  constructor() {
+  constructor(private taskServiceService : TaskServiceService,) {
     this.taskPanelList = Object.keys(this.tasks);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.taskServiceService.taskContent.subscribe(message => {
+      if (this.taskServiceService.getTask()) {
+        this.taskData = this.taskServiceService.getTask();
+        this.taskData.forEach(element => {
+          let mapArray = {
+            id: element.taskID,
+            title: element.title,
+            description: element.discription
+          }
+          this.tasks['todo'].push(mapArray)
+        });
+      }
+    });
+  }
+
 }

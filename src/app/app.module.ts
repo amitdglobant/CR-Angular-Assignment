@@ -8,21 +8,26 @@ import { MaterialModule } from './material.module';
 import { TaskPanelComponent } from './components/task-panel/task-panel.component';
 import { TaskComponent } from './components/task/task.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskPanelComponent,
     TaskComponent,
-    TaskCardComponent
+    TaskCardComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  entryComponents: [TaskPanelComponent],
+  entryComponents: [TaskPanelComponent, AddTaskComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
