@@ -13,13 +13,11 @@ import { TaskService } from '../../shared/task.service'
 })
 export class TaskComponent implements OnInit {
 
-  taskForm: FormGroup = new FormGroup({
-    title: new FormControl("", Validators.required),
-    description: new FormControl("", Validators.required),
-  });
+
   taskStatus = Task.statusList;
 
-  addTask:boolean = true;
+  taskForm:FormGroup;
+  addTask:boolean = false;
   constructor(private taskService:TaskService) {}
 
   ngOnInit() {}
@@ -32,10 +30,10 @@ export class TaskComponent implements OnInit {
   }
 
   showAddTask(){
-
+    this.addTask = true
   }
 
   hideAddTask(){
-
+    this.addTask = false
   }
 }

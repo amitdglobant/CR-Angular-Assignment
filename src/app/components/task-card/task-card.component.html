@@ -1,17 +1,47 @@
 <mat-card class="task-card">
-    <mat-card-header class="task-card-header">
+    <mat-card-header *ngIf="!editTaskFlag" class="task-card-header">
         <mat-card-title>
             <span>{{task.title}}</span>
         </mat-card-title>
         <div>
-            <i class="material-icons">
+            <i class="material-icons" (click)="showeditTask()">
+                edit
+            </i>
+            <i class="material-icons" (click)="removeTask()">
                 close
             </i>
+
         </div>
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content class="task-card-content">
         <div>Task Id: {{task.id}}</div>
         {{task.description}}
+    </mat-card-content>
+
+     <mat-card-content *ngIf="editTaskFlag" class="task-card-content">
+        <form [formGroup]="taskForm" (ngSubmit)="addNewTask()">
+      
+          <mat-form-field>
+            <input matInput formControlName="title" placeholder="Title">
+            <mat-error *ngIf="taskForm.get('title').invalid">This is required</mat-error>
+          </mat-form-field>
+
+       
+       
+          <mat-form-field>
+            <input matInput formControlName="description" placeholder="Description">
+            <mat-error *ngIf="taskForm.get('description').invalid">This is required, string only</mat-error>
+          </mat-form-field>
+        <div>
+            <mat-label>Status</mat-label>
+              <mat-select [formControlName]="status">
+                <mat-option *ngFor="let status of taskStatus" [value]="status.id">
+                  {{status.name}}
+                </mat-option>
+             </mat-select>
+         </div>
+        <button  mat-raised-button color="primary" [disabled]="!taskForm.valid" (click)="editTask()" >Save</button>
+    </form>
     </mat-card-content>
 </mat-card>
