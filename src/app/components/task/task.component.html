@@ -1,1 +1,21 @@
-<button mat-raised-button color="primary">Add Task</button>
+<button mat-raised-button color="primary" (click)="toggleTaskPanel()">Add Task</button>
+
+<div [hidden]="!showHideAddEditTaskPanel">
+<h1>Add/Edit Task Panel</h1>
+
+<label>Task Title</label>
+<input id="taskTitle" type="text" #taskTitle/>
+
+<label>Task Type</label>
+<select id="taskType" [disabled]="isTaskCreate" #taskType>
+    <option value="todo">TO DO</option>
+    <option value="inProgress">IN PROGRESS</option>
+    <option value="done">DONE</option>
+</select>
+
+<label>Task Description</label>
+<input id="taskDescription" type="text" #taskDesc/>
+
+<button (click)="saveTask(taskTitle, taskType, taskDesc)">Save Details</button>
+
+</div> 

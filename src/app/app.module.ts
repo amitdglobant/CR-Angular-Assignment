@@ -8,6 +8,7 @@ import { MaterialModule } from './material.module';
 import { TaskPanelComponent } from './components/task-panel/task-panel.component';
 import { TaskComponent } from './components/task/task.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
+import { TaskService } from './components/services/task.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { TaskCardComponent } from './components/task-card/task-card.component';
     MaterialModule
   ],
   entryComponents: [TaskPanelComponent],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
