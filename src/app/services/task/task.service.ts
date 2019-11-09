@@ -34,7 +34,30 @@ export class TaskService {
   }
 
   deleteTask(id:number) {
-    console.log('Not implemented');
+    let arr, index;
+
+    index = this.tasks.todo.find( t=> t.id === id);
+    if (index) {
+      this.tasks.todo.splice(index, 1);
+    } else {
+      index = this.tasks.inProgress.find( t=> t.id === id);
+      if (index) {
+        this.tasks.inProgress.splice(index, 1);
+      } else {
+        index = this.tasks.done.find( t=> t.id === id);
+
+        if(index) {
+          this.tasks.done.splice(index, 1);
+        }
+      }
+    }
+
+    
+  }
+
+  private delete(arr, task) {
+    const index = arr.indexOf(task);
+    arr.splice(index, 1);
   }
 
   getAllTasks(){

@@ -13,6 +13,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from './services/task/task.service';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TaskService } from './services/task/task.service';
     TaskPanelComponent,
     TaskComponent,
     TaskCardComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    DeleteConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import { TaskService } from './services/task/task.service';
     MatDialogModule,
     FormsModule
   ],
-  entryComponents: [TaskPanelComponent, AddTaskComponent],
+  entryComponents: [TaskPanelComponent, AddTaskComponent, DeleteConfirmationComponent],
   providers: [TaskService],
   bootstrap: [AppComponent]
 })
