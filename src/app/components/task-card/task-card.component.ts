@@ -24,7 +24,7 @@ export class TaskCardComponent implements OnInit {
   	this.taskForm = new FormGroup({
 	    title: new FormControl(this.task.title, Validators.required),
 	    description: new FormControl(this.task.description, Validators.required),
-	    status: new FormControl(this.task.getStatus(), Validators.required),
+	    status: new FormControl(this.task.getStatusId(), Validators.required),
 	  });
   }
 
@@ -33,12 +33,14 @@ export class TaskCardComponent implements OnInit {
   }
 
   editTask(){
-  	this.editTaskFlag = false
+  	
   	if(this.taskForm.valid){
-
-  		// let task = new Task(this.taskForm.get("title").value,this.taskForm.get("description").value)
-  		// this.taskService.updateTask(task)
+      this.task.title = this.taskForm.get("title").value
+      this.task.description = this.taskForm.get("description").value
+      this.task.setStatus(this.taskForm.get("status").value)
+      this.taskService.updateTask(this.task.id,this.task)
   	}
+    this.editTaskFlag = false
   }
 
   removeTask(){

@@ -35,7 +35,7 @@
           </mat-form-field>
         <div>
             <mat-label>Status</mat-label>
-              <mat-select [formControlName]="status">
+              <mat-select formControlName="status">
                 <mat-option *ngFor="let status of taskStatus" [value]="status.id">
                   {{status.name}}
                 </mat-option>
