@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -20,10 +21,10 @@ describe('HomeComponent', () => {
         CommonModule,
         FlexLayoutModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        DragDropModule
       ]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
