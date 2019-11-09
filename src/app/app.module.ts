@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module'
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import {DialogModule} from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { TaskPanelComponent } from './components/task-panel/task-panel.component';
@@ -18,9 +20,11 @@ import { TaskCardComponent } from './components/task-card/task-card.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    DialogModule
   ],
   entryComponents: [TaskPanelComponent],
   providers: [],

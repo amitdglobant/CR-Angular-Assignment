@@ -1,1 +1,17 @@
-<button mat-raised-button color="primary">Add Task</button>
+<button mat-raised-button color="primary" (click)="addTask()">Add Task</button>
+
+<p-dialog header="Add Task" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" 
+[maximizable]="true" [baseZIndex]="10000">
+
+<mat-form-field>
+    <input matInput placeholder="Id" [(ngModel)]="id">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="task title" [(ngModel)]="title">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="task description" [(ngModel)]="description">
+  </mat-form-field>
+  <button mat-button color="primary" (click)="saveTask()">Submit</button>
+</p-dialog>
