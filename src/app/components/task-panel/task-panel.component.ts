@@ -57,18 +57,20 @@ export class TaskPanelComponent implements OnInit {
 
   constructor() {
     this.taskPanelList = Object.keys(this.tasks);
+    console.log(this.taskPanelList);
   }
 
   ngOnInit() { }
   getTaskData(value) {
-    console.log(value);
     value['id'] = this.findMaxId() + 1;
     this.tasks.todo.push(value);
   }
   findMaxId() {
-    this.tasks.todo.forEach(item => {
+    this.taskPanelList.forEach(task=>{
+    this.tasks[task].forEach(item => {
       this.maxId = Math.max(+item.id, this.maxId);
     })
+  })
     return this.maxId;
   }
   deleteItem(item) {

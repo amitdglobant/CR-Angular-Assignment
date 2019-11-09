@@ -4,7 +4,7 @@
             <span>{{task.title}}</span>
         </mat-card-title>
         <div>
-            <i class="material-icons" (click)="delete()">
+            <i class="material-icons" (click)="delete(task.title)">
                 close
             </i>
         <button mat-button  class="mat-raised-button mat-primary" (click)="edit()">edit</button>

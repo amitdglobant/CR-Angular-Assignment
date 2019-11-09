@@ -20,12 +20,12 @@ export class TaskCardComponent implements OnInit {
     console.log("task",this.task);
   }
 
-  delete(){
+  delete(title){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.height='200px';
     dialogConfig.width='200px';
     dialogConfig.data = {
-      userData: this.task
+      userData: this.task,
     };
     const dialogRef = this.dialog.open(DeleteDialogComponent,dialogConfig);
     dialogRef.afterClosed().subscribe(data=>{
