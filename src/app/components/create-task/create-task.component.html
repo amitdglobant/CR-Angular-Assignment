@@ -1,0 +1,15 @@
+<h1>Create Task</h1>
+  <div class="createTaskContainer">
+    <form [formGroup]="createTaskForm" (ngSubmit)="createTask()">
+  
+        <input type="text" placeholder="Task Title" formControlName="taskTitle">
+  
+        <div *ngIf="isSubmitted && formControls.taskTitle.errors.required">Task title is important</div>
+  
+        <input type="text" placeholder="Task description" formControlName="taskDescription">
+  
+        <div *ngIf="isSubmitted && formControls.taskDescription.errors.required">Task discription is important</div>
+  
+        <button mat-raised-button color="primary" (click)='createTask()'>Create Task</button>>
+    </form>
+  </div>
