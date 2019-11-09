@@ -27,6 +27,7 @@ export class TaskComponent implements OnInit {
       description: this.description
     }
     this.emitData.emit(obj);
+    this.display=false;
   }
 
 
