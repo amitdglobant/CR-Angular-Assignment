@@ -15,3 +15,11 @@
     display: flex;
     justify-content: space-between;
 }
+div.actions{
+    .delete{
+        cursor: pointer;
+    }
+    .edit{
+        cursor: pointer;
+    }
+}

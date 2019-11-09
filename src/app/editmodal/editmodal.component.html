@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>Add Task</h2>
+
+
+<mat-dialog-content>
+    <form [formGroup]="form">
+        <div class="form_container">
+            <mat-form-field>
+
+                <input matInput placeholder="Task Title" formControlName="title">
+
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="number" placeholder="Task ID" formControlName="id">
+
+            </mat-form-field>
+
+            <mat-form-field>
+
+                <mat-select placeholder="Select Status" formControlName="status">
+
+                    <mat-option value="todo">
+                        TO DO</mat-option>
+                    <mat-option value="inprogress">
+                        In Progress</mat-option>
+                    <mat-option value="done">
+                        Done</mat-option>
+
+                </mat-select>
+
+            </mat-form-field>
+
+
+            <mat-form-field>
+
+                <textarea matInput placeholder="Task Description" formControlName="description">
+
+                                </textarea>
+
+            </mat-form-field>
+
+        </div>
+
+
+
+
+        <mat-dialog-actions>
+
+            <button class="mat-raised-button" (click)="close()" type="submit" >
+                Close
+            </button>
+
+            <button class="mat-raised-button mat-primary" (click)="save()" [disabled]="!form.valid">
+                Save
+            </button>
+
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>

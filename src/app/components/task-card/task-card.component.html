@@ -3,9 +3,12 @@
         <mat-card-title>
             <span>{{task.title}}</span>
         </mat-card-title>
-        <div>
-            <i class="material-icons">
+        <div class="actions">
+            <i class="material-icons delete" (click)="delete(task)">
                 close
+            </i>
+            <i class="material-icons edit" (click)="editTask(task)">
+                edit
             </i>
         </div>
     </mat-card-header>
