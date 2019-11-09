@@ -21,9 +21,10 @@ export class TaskComponent implements OnInit {
       this.showHideAddEditTaskPanel = true;
       this.isTaskCreate = false;
       this.previousTaskTy = taskObj.taskType;
-      document.querySelector('#taskTitle').value = taskObj.title;
-      document.querySelector('#taskType').value = taskObj.taskType;
-      document.querySelector('#taskDescription').value = taskObj.description;
+
+      (document.querySelector('#taskTitle') as HTMLInputElement).value = taskObj.title;
+      (document.querySelector('#taskType') as HTMLInputElement).value = taskObj.taskType;
+      (document.querySelector('#taskDescription') as HTMLInputElement).value = taskObj.description;
       this.editTaskId = taskObj.id;
     });
   }
