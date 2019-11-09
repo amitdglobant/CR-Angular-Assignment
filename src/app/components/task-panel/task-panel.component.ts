@@ -11,7 +11,7 @@ export class TaskPanelComponent implements OnInit {
     inProgress: 'IN PROGRESS',
     done: 'DONE'
   };
-  maxId:number = 0;
+  maxId: number = 0;
   idCounter = 0;
 
   tasks: any = {
@@ -40,7 +40,7 @@ export class TaskPanelComponent implements OnInit {
     inProgress: [
       {
         id: 2,
-        title: 'Sample Task 2' ,
+        title: 'Sample Task 2',
         description: 'Sample description of task. Can be longer.'
       }
     ],
@@ -59,22 +59,22 @@ export class TaskPanelComponent implements OnInit {
     this.taskPanelList = Object.keys(this.tasks);
   }
 
-  ngOnInit() {}
-  getTaskData(value){
+  ngOnInit() { }
+  getTaskData(value) {
     console.log(value);
-    value['id']=this.findMaxId()+1;
+    value['id'] = this.findMaxId() + 1;
     this.tasks.todo.push(value);
   }
-  findMaxId(){
-    this.tasks.todo.forEach(item=>{
-      this.maxId = Math.max(+item.id,this.maxId);
+  findMaxId() {
+    this.tasks.todo.forEach(item => {
+      this.maxId = Math.max(+item.id, this.maxId);
     })
     return this.maxId;
   }
-  deleteItem(item){
-    this.tasks.todo.forEach((i,index)=>{
-      if(i===item['userData']){
-        this.tasks.todo.splice(index,1);
+  deleteItem(item) {
+    this.tasks.todo.forEach((i, index) => {
+      if (i === item['userData']) {
+        this.tasks.todo.splice(index, 1);
       }
     })
   }

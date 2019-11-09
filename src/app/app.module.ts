@@ -11,6 +11,7 @@ import { TaskCardComponent } from './components/task-card/task-card.component';
 import { AddTaskDialogComponent } from './add-task-dialog/add-task-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
     TaskComponent,
     TaskCardComponent,
     AddTaskDialogComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
     MaterialModule,
     ReactiveFormsModule
   ],
-  entryComponents: [TaskPanelComponent,AddTaskDialogComponent,DeleteDialogComponent],
+  entryComponents: [TaskPanelComponent,AddTaskDialogComponent,DeleteDialogComponent,EditDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

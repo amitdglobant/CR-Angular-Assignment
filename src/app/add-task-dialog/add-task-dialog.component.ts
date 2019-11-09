@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class AddTaskDialogComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) data, private dialogRef:MatDialogRef<AddTaskDialogComponent>,private fb: FormBuilder) { }
+  constructor(private dialogRef:MatDialogRef<AddTaskDialogComponent>,private fb: FormBuilder) { }
 
   form:FormGroup;
   title:string;
