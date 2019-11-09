@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Add Task</h1>
+<div mat-dialog-content>
+  
+</div>
+
+<form [formGroup]="titleFormGroup" (ngSubmit)="onSubmit()">
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput placeholder="Input" formControlName="title">
+        </mat-form-field>
+        <span *ngIf="title.errors.required">
+            Task Title is required.
+        </span>
+
+        <mat-form-field>
+            <textarea matInput placeholder="Textarea" formControlName="description"></textarea>
+        </mat-form-field>
+        <span *ngIf="description.errors.required">
+            Task Description is required.
+        </span>
+
+        <button mat-raised-button color="primary">Create Title</button>
+    </div>
+</form>
+      
