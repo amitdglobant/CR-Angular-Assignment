@@ -17,10 +17,10 @@ export class TaskComponent implements OnInit {
   ngOnInit() { }
 
   addNewTaskPopup() {
-    this.openDialog();
+    this.openFormDialog();
   }
 
-  openDialog() {
+  openFormDialog() {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
         message: 'Please fill task details.',
