@@ -1,0 +1,17 @@
+<mat-dialog-content>
+    <h4>{{message}} </h4>
+    <br>
+    <form [formGroup]="taskForm">
+        <mat-form-field>
+            <input matInput placeholder="Enter Task Title" formControlName="title" autocomplete="off">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Enter Task Description" formControlName="description" autocomplete="off">
+        </mat-form-field>
+        <br>
+        <br>
+        <button mat-raised-button color="primary" class="hand-pointer" type="button" (click)="addNewTask()">Add
+            Task</button>
+    </form>
+</mat-dialog-content>

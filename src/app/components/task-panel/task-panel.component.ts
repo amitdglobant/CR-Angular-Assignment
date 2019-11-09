@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-task-panel',
@@ -6,13 +6,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-panel.component.scss']
 })
 export class TaskPanelComponent implements OnInit {
+  @Input('delet-Task') delet_Task = (idToDelete) => {
+    if (this.tasks && this.tasks.todo) {
+      this.tasks.todo.forEach(element => {
+        if (element.id === idToDelete) {
+          this.tasks.todo.splice(element, 1);
+        }
+      });
+      this.tasks.inProgress.forEach(element => {
+        if (element.id === idToDelete) {
+          this.tasks.inProgress.splice(element, 1);
+        }
+      });
+      this.tasks.done.forEach(element => {
+        if (element.id === idToDelete) {
+          this.tasks.done.splice(element, 1);
+        }
+      });
+    }
+  };
   title: object = {
     todo: 'TO DO',
     inProgress: 'IN PROGRESS',
     done: 'DONE'
   };
 
-  idCounter = 0;
+  static idCounter: number = 7;
 
   tasks: any = {
     todo: [
@@ -40,7 +59,7 @@ export class TaskPanelComponent implements OnInit {
     inProgress: [
       {
         id: 2,
-        title: 'Sample Task 2' ,
+        title: 'Sample Task 2',
         description: 'Sample description of task. Can be longer.'
       }
     ],
@@ -59,5 +78,15 @@ export class TaskPanelComponent implements OnInit {
     this.taskPanelList = Object.keys(this.tasks);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  getTaskData(event: any) {
+    console.log(event);
+
+    this.tasks.todo.push({
+      id: TaskPanelComponent.idCounter++,
+      title: event.title,
+      description: event.description
+    })
+  }
 }

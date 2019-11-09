@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskComponent } from './task.component';
+import { MaterialModule } from 'src/app/material.module';
+import { TaskCardComponent } from '../task-card/task-card.component';
+import { TaskPanelComponent } from '../task-panel/task-panel.component';
 
 describe('TaskComponent', () => {
   let component: TaskComponent;
@@ -8,9 +11,10 @@ describe('TaskComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TaskComponent ]
+      declarations: [TaskCardComponent,TaskPanelComponent,TaskComponent],
+      imports: [MaterialModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
