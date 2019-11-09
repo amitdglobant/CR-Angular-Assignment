@@ -11,10 +11,26 @@ export class TaskService {
     this.currentId = 100;
    }
 
-  addTask(task:any) {
-    task.id=this.currentId++;
-    this.tasks.todo.push(task);
-    console.log(this.tasks);
+  addOrUpdateTask(task:any) {
+    if (!task.id) {
+      task.id=this.currentId++;
+      this.tasks.todo.push(task);
+    } else {
+      let t = this.tasks.todo.find(t => t.id === task.id);
+
+      if (!t) {
+        t = this.tasks.inProgress.find(t => t.id === task.id);
+      }
+
+      if (!t) {
+        t = this.tasks.done.find(t => t.id === task.id);
+      }
+
+      if (t) {
+        t.title = task.title;
+        t.description = task.description;
+      } 
+    }
   }
 
   deleteTask(id:number) {

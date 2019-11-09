@@ -15,19 +15,24 @@ export class AddTaskComponent implements OnInit {
 
   dialogRef: any;
 
+  btnText: string;
+
   @Output() closeDialog:Function;
 
   constructor(private taskService: TaskService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
-    // if (this.data.dialogRef) {
-    //   this.dialogRef = this.data.dialogRef;
-    // }
-    console.log(this.data);
+    this.btnText = this.data.task ? 'Update Task' : 'Add Task';
+
+    if (this.data.task) {
+      this.id = this.data.task.id;
+      this.title = this.data.task.title;
+      this.description = this.data.task.description;
+    }
   }
 
   addTask() {
-    this.taskService.addTask({
+    this.taskService.addOrUpdateTask({
       id: this.id,
       title: this.title,
       description: this.description 
