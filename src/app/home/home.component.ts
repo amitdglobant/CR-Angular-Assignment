@@ -16,34 +16,32 @@ export class HomeComponent implements OnInit {
   addTitleName = 'Intem';
   unicIndex = 0;
   currentId = null;
-  constructor() { }
-
-
   todo = [];
-  InProsess = [
-  ];
+  InProsess = [];
   done = [];
+
+  constructor() { }
 
   ngOnInit() {
     this.addItem();
   }
 
   /**
-     * 
-     * @param event 
-     * @description Move to Item to Progress  
-     */
+  * 
+  * @description add item into todo list 
+  * @function addItem
+  */
   addItem() {
-    console.log(this.addTitleName, this.currentId)
+
     if (this.addTitleName != '' && this.currentId == null) {
       this.unicIndex++;
       this.todo.push({ name: this.addTitleName, id: this.unicIndex });
       this.addTitleName = '';
       this.currentId = null;
     } else if (this.addTitleName != '' && this.currentId) {
-      console.log('i am in update')
+
       this.todo.filter((item) => {
-        console.log(item)
+
         if (item.id == this.currentId) {
           console.log(item.id)
           item.name = this.addTitleName;
@@ -59,19 +57,17 @@ export class HomeComponent implements OnInit {
 
   /**
    * 
-   * @param event 
-   * @description 
+   * @param indexId it is current id 
+   * @description Edit item 
+   * @function editItem
    */
   editItem(indexId) {
 
     if (indexId) {
       this.todo.filter((item) => {
-        console.log(item)
         if (item.id == indexId) {
-          console.log(item.id);
           this.currentId = item.id
           this.addTitleName = item.name;
-          // return item;
         }
       })
     }
@@ -80,27 +76,47 @@ export class HomeComponent implements OnInit {
   /**
    * 
    * @param event 
-   * @description Move to Item to Progress  
+   * @description Delete
    */
-  goToInPrsess() {
-    let confVal = confirm('Are you sure you want to delete this Item');
-    if (confVal == true) {
+  deleteItem(deleteId, from) {
+    if (deleteId) {
+      let confirmval = confirm('Are you sure you want to delete this item');
+      if (confirmval) {
+        if (from == 'todo') {
+          this.todo.splice(this.todo.findIndex(e => e.id == deleteId), 1);
+        } else if (from == 'InProsess') {
+          this.InProsess.splice(this.InProsess.findIndex(e => e.id == deleteId), 1);
+        } else if (from == 'done') {
+          this.done.splice(this.done.findIndex(e => e.id == deleteId), 1);
+        }
 
-      return true;
-    } else {
 
-      return false;
+      }
+
     }
   }
 
 
   /**
-   * @author Tushar Kadam
+   * @function goToInPrsess 
+   * @description Move to Item to Progress  
+   */
+  goToInPrsess() {
+
+  }
+
+
+  /**
+   * @function drop
    * @param event CdkDragDrop
+   * @description This drop event and it is geeting draged data fro dragable element 
    */
   drop(event: CdkDragDrop<string[]>) {
+    console.log(event.container)
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(event.container.data,
+        event.previousIndex,
+        event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,

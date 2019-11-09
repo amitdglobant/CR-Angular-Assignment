@@ -6,11 +6,11 @@
 <div class="example-container">
     <h2>To do </h2>
 
-    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[inProsessList]"
         class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of todo" cdkDrag>
             {{item.name}}
-            <a href="#" (click)="goToInPrsess()" mat-icon-button>
+            <a href="#" (click)="deleteItem(item?.id, 'todo')" mat-icon-button>
                 <mat-icon>close</mat-icon>
             </a>
             <a href="#" (click)="editItem(item?.id)" mat-icon-button>
@@ -21,13 +21,13 @@
 </div>
 
 <div class="example-container">
-    <h2>inProsess</h2>
+    <h2>Inprocess</h2>
 
-    <div cdkDropList #inProsessList="cdkDropList" [cdkDropListData]="InProsess"
-        [cdkDropListConnectedTo]="[InProsessList]" class="example-list" (cdkDropListDropped)="drop($event)">
+    <div cdkDropList #inProsessList="cdkDropList" [cdkDropListData]="InProsess" [cdkDropListConnectedTo]="[doneList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of InProsess" cdkDrag>
             {{item.name}}
-            <a href="#" mat-icon-button>
+            <a href="#" (click)="deleteItem(item?.id, 'InProsess')" mat-icon-button>
                 <mat-icon>close</mat-icon>
             </a>
             <a href="#" (click)="editItem(item?.id)" mat-icon-button>
@@ -40,11 +40,11 @@
 <div class="example-container">
     <h2>Done</h2>
 
-    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[inProsessList]"
         class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of done" cdkDrag>
             {{item.name}}
-            <a href="#" mat-icon-button>
+            <a href="#" (click)="deleteItem(item?.id, 'done')" mat-icon-button>
                 <mat-icon>close</mat-icon>
             </a>
             <a href="#" (click)="editItem(item?.id)" mat-icon-button>
