@@ -1,0 +1,22 @@
+<div>
+    <ul>
+        <li>
+            Name: <input type="text" [(ngModel)]="title">
+        </li>
+
+        <li>
+            Description: <input type="text" [(ngModel)]="description">
+        </li>
+
+        <li>
+            <button class="add-task" (click)="addTask()">
+                Add Task
+            </button>
+
+            <button class="cancel-task" mat-dialog-close (click)="cancel()">
+                Cancel
+            </button>
+        </li>
+    </ul>
+
+</div>
