@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { TaskListService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-task-card',
@@ -9,9 +10,13 @@ export class TaskCardComponent implements OnInit {
 
   @Input() task: any;
 
-  constructor() { }
+  constructor(private taskService: TaskListService) {}
 
   ngOnInit() {
+  }
+
+  deleteTask(id: number, status: string) {
+    this.taskService.deleteTask(id, status);
   }
 
 }
