@@ -29,4 +29,5 @@ export class TaskComponent implements OnInit {
     this.emitData.emit(obj);
   }
 
+
 }

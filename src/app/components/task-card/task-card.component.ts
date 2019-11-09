@@ -13,5 +13,10 @@ export class TaskCardComponent implements OnInit {
 
   ngOnInit() {
   }
+  deleteTask(id){
 
+  }
+  updateTask(task){
+
+  }
 }

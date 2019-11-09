@@ -4,13 +4,13 @@
             <span>{{task.title}}</span>
         </mat-card-title>
         <div>
-            <i class="material-icons">
+            <i class="material-icons" (click)="deleteTask(task.id)">
                 close
             </i>
         </div>
     </mat-card-header>
     <mat-divider></mat-divider>
-    <mat-card-content class="task-card-content">
+    <mat-card-content class="task-card-content" (click)="editTask(task)">
         <div>Task Id: {{task.id}}</div>
         {{task.description}}
     </mat-card-content>

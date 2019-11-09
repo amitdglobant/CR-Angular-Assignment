@@ -40,7 +40,7 @@ export class TaskPanelComponent implements OnInit {
     inProgress: [
       {
         id: 2,
-        title: 'Sample Task 2' ,
+        title: 'Sample Task 2',
         description: 'Sample description of task. Can be longer.'
       }
     ],
@@ -59,5 +59,8 @@ export class TaskPanelComponent implements OnInit {
     this.taskPanelList = Object.keys(this.tasks);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
+  getTaskData($event) {
+    this.tasks['todo'].push($event);
+  }
 }
