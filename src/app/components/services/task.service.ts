@@ -55,7 +55,6 @@ export class TaskService {
   }
 
   deleteTask(taskId, taskType) {
-
     for ( let i=0; i < this.tasks[taskType].length; i++) {
       if(taskId == this.tasks[taskType][i].id) {
         this.tasks[taskType].splice(i,1);
@@ -65,7 +64,7 @@ export class TaskService {
   }
 
   addTask(taskTitle, taskType, taskDesc, tskId = 0, preTaskType = '') {
-    // Edit
+
     if(tskId) {
      // Edit Task
      if(preTaskType != taskType) {
