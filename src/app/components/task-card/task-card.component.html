@@ -1,9 +1,10 @@
-<mat-card class="task-card">
+
+<mat-card id="task-{{task.id}}" class="task-card">
     <mat-card-header class="task-card-header">
         <mat-card-title>
             <span>{{task.title}}</span>
         </mat-card-title>
-        <div>
+        <div style="cursor: pointer;" (click)="removeTask(task.id)">
             <i class="material-icons">
                 close
             </i>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {TaskComponent} from '../task/task.component';
 
 @Component({
   selector: 'app-task-panel',
@@ -55,9 +57,19 @@ export class TaskPanelComponent implements OnInit {
 
   taskPanelList: string[];
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.taskPanelList = Object.keys(this.tasks);
+    console.log('hi', this.tasks);
+    // let localStore = JSON.stringify(this.tasks);
+    // localStorage.setItem('taskData', localStore);
   }
 
   ngOnInit() {}
+
+  addTask() {
+    const dialogRef = this.dialog.open(TaskComponent,{
+      width: '640px', disableClose: true 
+    });
+  }
+
 }

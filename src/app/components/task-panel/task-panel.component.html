@@ -1,4 +1,5 @@
-<app-task (emitData)="getTaskData($event)"></app-task>
+<button mat-raised-button (click)="addTask()" color="primary">Add Task</button>
+<!-- <app-task (emitData)="getTaskData($event)"></app-task> -->
 <div class="task-panel-container">
   <div *ngFor="let task of taskPanelList" class="task-panel">
     <div class="example-card">

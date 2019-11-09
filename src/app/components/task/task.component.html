@@ -1,1 +1,50 @@
-<button mat-raised-button color="primary">Add Task</button>
+
+<div>
+    <div>
+        <form [formGroup]="addTaskForm">
+            <mat-grid-list cols="2" [cols]="breakpoint" rowHeight="85px" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                    <div class="text-inside">
+                        <mat-form-field>
+                            <input matInput placeholder="Task" value={{tname}} formControlName="taskname" required>
+                            <mat-error *ngIf="addTaskForm.controls.taskname.hasError('required')">
+                                Please enter task name!
+                            </mat-error>
+                            <mat-error *ngIf="addTaskForm.controls.taskname.hasError('pattern')">
+                                Numbers are not allowed in task name!
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="text-inside">
+                        <mat-form-field class="example-full-width">
+                            <textarea matInput value={{tdesc}} formControlName="taskdesc" placeholder="Description"></textarea>
+                            <mat-error *ngIf="addTaskForm.controls.taskdesc.hasError('required')">
+                                Please enter task description!
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                
+                <mat-grid-tile>
+                    <div class="text-inside">
+                        <mat-radio-group class="">
+                            <div style="color:grey;">Status</div>
+                            <mat-radio-button color="primary" style="padding:4px 4px 0px 0px;" value="1">To Do</mat-radio-button>
+                            <mat-radio-button color="primary" [checked]='true' style="padding:4px 0px 0px 24px;" value="2">Inprogress</mat-radio-button>
+                            <mat-radio-button color="primary" style="padding:4px 0px 0px 24px;" value="3">Done</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </mat-grid-tile>
+                
+            </mat-grid-list>
+            
+            <div class="btn-sec">
+                <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="addTask()">Save</button>
+                <button mat-raised-button type="button" class="Discard-btn" (click)="closePopup()">Cancel</button>
+            </div>
+            
+        </form>
+    </div>
+</div>
