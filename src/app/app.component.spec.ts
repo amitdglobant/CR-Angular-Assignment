@@ -1,11 +1,21 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialdesignModule } from './materialdesign/materialdesign.module';
 import { TestBed, async } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppComponent } from "./app.component";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe("AppComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule,
+        BrowserAnimationsModule,
+        MaterialdesignModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        FormsModule
+      ],
       declarations: [AppComponent]
     }).compileComponents();
   }));

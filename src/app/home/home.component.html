@@ -1,1 +1,55 @@
-<p>All set for code realm!</p>
+<mat-card>
+    <input matInput type="text" [(ngModel)]="addTitleName">
+    <button (click)="addItem()">Add Item</button>
+</mat-card>
+
+<div class="example-container">
+    <h2>To do </h2>
+
+    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of todo" cdkDrag>
+            {{item.name}}
+            <a href="#" (click)="goToInPrsess()" mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </a>
+            <a href="#" (click)="editItem(item?.id)" mat-icon-button>
+                <mat-icon>edit</mat-icon>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="example-container">
+    <h2>inProsess</h2>
+
+    <div cdkDropList #inProsessList="cdkDropList" [cdkDropListData]="InProsess"
+        [cdkDropListConnectedTo]="[InProsessList]" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of InProsess" cdkDrag>
+            {{item.name}}
+            <a href="#" mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </a>
+            <a href="#" (click)="editItem(item?.id)" mat-icon-button>
+                <mat-icon>edit</mat-icon>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="example-container">
+    <h2>Done</h2>
+
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of done" cdkDrag>
+            {{item.name}}
+            <a href="#" mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </a>
+            <a href="#" (click)="editItem(item?.id)" mat-icon-button>
+                <mat-icon>edit</mat-icon>
+            </a>
+        </div>
+    </div>
+</div>

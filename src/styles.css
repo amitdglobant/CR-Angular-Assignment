@@ -1,9 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 .full-width {
     width: 100%;
 }
 
-html, body {
-  padding: 0px;
-  margin: 0px;
-}
+ html,body{height:100%;margin:0;padding:0;  background-color: rgb(221, 221, 221);}
+
