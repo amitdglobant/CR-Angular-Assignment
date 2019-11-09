@@ -1,0 +1,15 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput  placeholder="Enter the ID">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Enter the Description">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput  placeholder="Enter the Heading">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.heading"  cdkFocusInitial>Submit</button>
+</div
