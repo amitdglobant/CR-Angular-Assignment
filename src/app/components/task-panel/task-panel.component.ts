@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskManagerService } from 'src/app/services/task-manager.service';
 
 @Component({
   selector: 'app-task-panel',
@@ -12,51 +13,15 @@ export class TaskPanelComponent implements OnInit {
     done: 'DONE'
   };
 
-  idCounter = 0;
-
-  tasks: any = {
-    todo: [
-      {
-        id: 1,
-        title: 'Sample Task 1',
-        description: 'Sample description of task. Can be longer.'
-      },
-      {
-        id: 4,
-        title: 'Sample Task 4',
-        description: 'Sample description of task. Can be longer.'
-      },
-      {
-        id: 6,
-        title: 'Sample Task 6',
-        description: 'Sample description of task. Can be longer.'
-      },
-      {
-        id: 5,
-        title: 'Sample Task 5',
-        description: 'Sample description of task. Can be longer.'
-      }
-    ],
-    inProgress: [
-      {
-        id: 2,
-        title: 'Sample Task 2' ,
-        description: 'Sample description of task. Can be longer.'
-      }
-    ],
-    done: [
-      {
-        id: 3,
-        title: 'Sample Task 3',
-        description: 'Sample description of task. Can be longer.'
-      }
-    ]
-  };
-
   taskPanelList: string[];
+  tasks: {}
 
-  constructor() {
+  constructor(
+    private taskManagerService: TaskManagerService
+  ) {
+    this.tasks = this.taskManagerService.getTasks();
     this.taskPanelList = Object.keys(this.tasks);
+    // this.taskPanelList = Object.keys(this.tasks);
   }
 
   ngOnInit() {}

@@ -1,0 +1,11 @@
+<div class="example-container">
+  <form [formGroup]="taskForm" (ngSubmit)="onSave()">
+    <mat-form-field>
+      <input matInput formControlName="title" name="title" placeholder="Task name">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput formControlName="description" name="description" placeholder="description" row="3" ></textarea>
+    </mat-form-field>
+    <button mat-button type="submit">Save</button>
+  </form>
+</div>

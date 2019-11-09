@@ -10,7 +10,7 @@
     </div>
     <div class="drop-list">
       <div class="drop-box" *ngFor="let taskObj of tasks[task]">
-        <app-task-card [task]="taskObj"></app-task-card>
+        <app-task-card [taskGroup]="task" [task]="taskObj"></app-task-card>
       </div>
     </div>
   </div>

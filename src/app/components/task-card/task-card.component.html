@@ -1,7 +1,17 @@
 <mat-card class="task-card">
     <mat-card-header class="task-card-header">
         <mat-card-title>
-            <span>{{task.title}}</span>
+            <span *ngIf="!isEditing">{{task.title}}</span>
+            <div *ngIf="isEditing">
+                <label for="name">Task Name</label>
+                <input
+                    id="name"
+                    matInput
+                    type="text"
+                    [(ngModel)]="title"
+                    name="title"
+                >
+            </div>
         </mat-card-title>
         <div>
             <i class="material-icons">
@@ -12,6 +22,28 @@
     <mat-divider></mat-divider>
     <mat-card-content class="task-card-content">
         <div>Task Id: {{task.id}}</div>
-        {{task.description}}
+        <div *ngIf="!isEditing">{{task.description}}</div>
+        <div *ngIf="isEditing">
+            <label for="description">Description</label>
+            <textarea
+                id="description"
+                rows="3"
+                [(ngModel)]="description"
+                matInput
+                name="description"
+
+            ></textarea>
+        </div>
     </mat-card-content>
+    <mat-card-content *ngIf="isEditing">
+        <mat-select placeholder="Placeholder" [(ngModel)]="selectedValue" name="item">
+            <mat-option *ngFor="let item of status" [value]="item.value">
+                {{item.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="isEditing = !isEditing" *ngIf="!isEditing">Edit Task</button>
+        <button mat-button (click)="updateTask()" *ngIf="isEditing">Update Task</button>
+    </mat-card-actions>
 </mat-card>
