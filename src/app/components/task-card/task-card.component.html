@@ -24,14 +24,14 @@
       
           <mat-form-field>
             <input matInput formControlName="title" placeholder="Title">
-            <mat-error *ngIf="taskForm.get('title').invalid">This is required</mat-error>
+            <mat-error *ngIf="taskForm.get('title').invalid">This is required, string only</mat-error>
           </mat-form-field>
 
        
        
           <mat-form-field>
             <input matInput formControlName="description" placeholder="Description">
-            <mat-error *ngIf="taskForm.get('description').invalid">This is required, string only</mat-error>
+            <mat-error *ngIf="taskForm.get('description').invalid">This is required</mat-error>
           </mat-form-field>
         <div>
             <mat-label>Status</mat-label>

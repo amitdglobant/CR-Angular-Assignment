@@ -22,7 +22,7 @@ export class TaskCardComponent implements OnInit {
 
   ngOnInit() {
   	this.taskForm = new FormGroup({
-	    title: new FormControl(this.task.title, Validators.required),
+	    title: new FormControl(this.task.title, [ Validators.required , Validators.pattern("[a-z]*") ]),
 	    description: new FormControl(this.task.description, Validators.required),
 	    status: new FormControl(this.task.getStatusId(), Validators.required),
 	  });
