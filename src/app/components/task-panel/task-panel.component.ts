@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../shared/task.class'
 import { TaskService } from '../../shared/task.service'
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task-panel',
@@ -29,7 +29,7 @@ export class TaskPanelComponent implements OnInit {
     let tasks = this.taskService.getAllTasks()
     Task.statusList.forEach( (status)=>{
    
-        this.filteredTask[status.id] = []
+        this.filteredTask[status.id] = Array()
       
     })
 
@@ -40,14 +40,12 @@ export class TaskPanelComponent implements OnInit {
     console.log(this.filteredTask)
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+  drop(event: CdkDragDrop<string[]>, status:string) {
+   
+    let t:Task = event.item.data
+    if(t.getStatusId() != status){
+      t.setStatus(status);
+      this.taskService.updateTask(t.id,t)
     }
   }
 

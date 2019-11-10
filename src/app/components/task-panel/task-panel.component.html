@@ -1,5 +1,5 @@
 <app-task (emitData)="getTaskData($event)"></app-task>
-<div class="task-panel-container">
+<div class="task-panel-container" cdkDropListGroup>
   <div *ngFor="let status of taskStatus" class="task-panel">
     <div class="example-card">
       <div class="card-header">
@@ -8,9 +8,9 @@
         </div>
       </div>
     </div>
-    <div class="drop-list">
-      <div class="drop-box" *ngFor="let task of filteredTask[status.id]">
-        <app-task-card [task]="task" ></app-task-card>
+    <div class="drop-list {{status.id}}" cdkDropList  [cdkDropListData]="filteredTask[status.id]"  (cdkDropListDropped)="drop($event,status.id)" >
+      <div class="drop-box" cdkDrag [cdkDragData]="task" *ngFor="let task of filteredTask[status.id]">
+        <app-task-card [task]="task"  ></app-task-card>
       </div>
     </div>
   </div>

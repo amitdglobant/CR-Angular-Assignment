@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskPanelComponent } from './components/task-panel/task-panel.component';
 import { TaskComponent } from './components/task/task.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
+import { ConfirmationDialog } from './components/task-card/task-card.component';
 import { TaskService } from './shared/task.service'
 import { MaterialModule } from './shared/material.module';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     AppComponent,
     TaskPanelComponent,
     TaskComponent,
-    TaskCardComponent
+    TaskCardComponent,
+    ConfirmationDialog
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     FormsModule,
     ReactiveFormsModule
   ],
-  entryComponents: [TaskPanelComponent],
+  entryComponents: [TaskPanelComponent,ConfirmationDialog],
   providers: [TaskService],
   bootstrap: [AppComponent]
 })

@@ -15,8 +15,10 @@ import {
   MatSliderModule,
   MatGridListModule,
   MatCardModule,
-  MatDividerModule
+  MatDividerModule,
 } from '@angular/material';
+
+import { DragDropModule } from "@angular/cdk/drag-drop"
 
 @NgModule({
   imports: [
@@ -35,10 +37,11 @@ import {
     MatSliderModule,
     MatGridListModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    DragDropModule
   ],
   exports: [
-    MatButtonModule,
+   MatButtonModule,
     MatCheckboxModule,
     MatInputModule,
     MatRadioModule,
@@ -53,7 +56,8 @@ import {
     MatSliderModule,
     MatGridListModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    DragDropModule
   ]
 })
 export class MaterialModule {}

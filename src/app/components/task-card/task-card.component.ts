@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../shared/task.class' 
 import { FormGroup, Validators, FormControl } from "@angular/forms"
 import { TaskService } from '../../shared/task.service'
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-task-card',
@@ -10,41 +11,52 @@ import { TaskService } from '../../shared/task.service'
 })
 export class TaskCardComponent implements OnInit {
 
-  @Input() task:Task;	
-
-  taskForm : FormGroup;
+  @Input() task:Task = null;	
 
   editTaskFlag=false;
 
-  taskStatus = Task.statusList
-
-  constructor(private taskService:TaskService) { }
+  constructor(private taskService:TaskService,private dialog: MatDialog) { }
 
   ngOnInit() {
-  	this.taskForm = new FormGroup({
-	    title: new FormControl(this.task.title, [ Validators.required , Validators.pattern("[a-z]*") ]),
-	    description: new FormControl(this.task.description, Validators.required),
-	    status: new FormControl(this.task.getStatusId(), Validators.required),
-	  });
+  	
   }
 
   showeditTask(){
   	this.editTaskFlag = true
   }
 
-  editTask(){
-  	
-  	if(this.taskForm.valid){
-      this.task.title = this.taskForm.get("title").value
-      this.task.description = this.taskForm.get("description").value
-      this.task.setStatus(this.taskForm.get("status").value)
-      this.taskService.updateTask(this.task.id,this.task)
-  	}
+  hideEditTask(){
     this.editTaskFlag = false
   }
 
   removeTask(){
-  	this.taskService.removeTask(this.task.id)
+
+
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+         
+         if(result == true){
+             this.taskService.removeTask(this.task.id)
+         }
+        
+    });
+  }
+}
+
+
+@Component({
+  selector: 'confirmation-dialog',
+  templateUrl: 'confirmation-dialog.html',
+})
+export class ConfirmationDialog {
+
+  constructor( public dialogRef: MatDialogRef<ConfirmationDialog>) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

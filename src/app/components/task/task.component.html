@@ -1,19 +1,36 @@
-<button mat-raised-button color="primary" class="add_task_parent" (click)="showAddTask()" > Add Task</button>
-<div *ngIf="addTask" class="add_task">
-	<form [formGroup]="taskForm" (ngSubmit)="addNewTask()">
-		<div>
-		  <mat-form-field>
-		    <input matInput formControlName="title" placeholder="Title">
-		    <mat-error *ngIf="taskForm.get('title').invalid">This is required</mat-error>
-		  </mat-form-field>
-
-		</div>
-		<div>
-		  <mat-form-field>
-		    <input matInput formControlName="description" placeholder="Description">
-		    <mat-error *ngIf="taskForm.get('description').invalid">This is required, string only</mat-error>
-		  </mat-form-field>
-		</div>
-		<button mat-button [disabled]="!taskForm.valid" >Add</button>
-	</form>
-</div>
+<button *ngIf="!task" mat-raised-button color="primary" class="add_task_parent" (click)="showAddTask()" > Add Task</button>
+<mat-card *ngIf="addTaskFlag" class="edit-task">
+	
+	    <mat-card-header class="task-card-header">
+	        <mat-card-title>
+	          <span>
+	             Task Id : {{ id }}
+			  </span>
+	        </mat-card-title>
+	    </mat-card-header>
+	    <mat-card-content class="task-card-content">
+	    	<form [formGroup]="taskForm">
+	    	  <mat-form-field>
+			    <input matInput formControlName="title" placeholder="Title">
+			    <mat-error *ngIf="taskForm.get('title').invalid">This is required, string only</mat-error>
+			  </mat-form-field>
+	         <mat-form-field>
+			    <input matInput formControlName="description" placeholder="Description">
+			    <mat-error *ngIf="taskForm.get('description').invalid">This is required</mat-error>
+			  </mat-form-field>
+			  <div *ngIf="task">
+			   <mat-label>Status</mat-label>
+	              <mat-select formControlName="status">
+	                <mat-option *ngFor="let status of taskStatus" [value]="status.id">
+	                  {{status.name}}
+	                </mat-option>
+	             </mat-select>
+	         </div>
+	          </form>
+	    </mat-card-content>
+	    <mat-card-actions>
+			  <button mat-raised-button class="save_btn" color="primary" [disabled]="!taskForm.valid" (click)="addUpdateTask()">Save</button>
+			  <button mat-raised-button  color="primary" (click)="hideAddTask()">Cancel</button>
+		</mat-card-actions>
+	
+</mat-card>

@@ -8,7 +8,7 @@ export class Task{
 			{   "id" : "todo",
 			    "name" : "TO DO"
 			},
-			{   "id" : "im_progress",
+			{   "id" : "in_progress",
 			    "name" : "IN PROGRESS"
 			},
 			{   "id" : "done",
@@ -23,7 +23,7 @@ export class Task{
 
 		if(id != null)
 			this.id = id
-		if(status)
+		if(status_id)
 			this.status_id = status_id
 	}
 

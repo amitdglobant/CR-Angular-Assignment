@@ -10,9 +10,20 @@ describe("workspace-project App", () => {
 
   it("should display welcome message", () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual(
-      "cr-angular-assignment app is running!"
+    expect(page.getElementBycss("app-root .content span").getText()).toEqual(
+      "My Task Tracker"
     );
+  });
+
+  it("should add task[title='Test title'] in todo", () => {
+    
+    page.getElementBycss("app-task button").click()
+    page.getElementByXpath('//*[@formcontrolname="title"]').sendKeys("Test title")
+    page.getElementByXpath('//*[@formcontrolname="description"]').sendKeys("Test desc")
+    page.getElementBycss('app-task .save_btn').click()
+
+    var elments = page.getAllElementByCss(".drop-list.todo app-task-card mat-card-title span")
+    expect(elments.last().getText()).toEqual("Test title")
   });
 
   afterEach(async () => {

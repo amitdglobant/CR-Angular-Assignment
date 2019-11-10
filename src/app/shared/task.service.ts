@@ -29,10 +29,10 @@ export class TaskService {
     localStorage.setItem("task-data",JSON.stringify(this.taskList))
   }
 
-  private getNewIndex():number
+  public getNewIndex():number
   {
     if(this.taskList.length == 0)
-      return 0;
+      return 1;
     return this.taskList[this.taskList.length-1].id+1
   }
 
