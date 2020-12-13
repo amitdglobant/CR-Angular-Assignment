@@ -1,4 +1,4 @@
-<app-task (emitData)="getTaskData($event)"></app-task>
+<app-task (emitData)="getTaskData($event)" (closeDialog)="closeDialog()"></app-task>
 <div class="task-panel-container">
   <div *ngFor="let task of taskPanelList" class="task-panel">
     <div class="example-card">
